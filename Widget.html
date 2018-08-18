@@ -1,354 +1,283 @@
 ﻿<html>
 
 <head>
-<meta http-equiv="content-type" content="text/html; charset=big5">
-<head><title>newclock</title>
+  <meta http-equiv="content-type" content="text/html; charset=big5">
+  <title>newclock</title>
 </head>
+
 <style>
 
-SPAN#clock
-{
-	font-family: Helvetica;
-	font-weight: bold;
-	color: #d1d1d1;
-	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
-	/*text-shadow: #FFFFFF 0px 1px 0px;*/
-	font-size: 26px;
-}
+  SPAN#clock
+  {
+  	font-family: Helvetica;
+  	font-weight: bold;
+  	color: #d1d1d1;
+  	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
+  	/*text-shadow: #FFFFFF 0px 1px 0px;*/
+  	font-size: 26px;
+  }
 
-SPAN#ampm
-{
-	font-family: Helvetica;
-	font-weight: bold;
-	color: #d1d1d1;
-	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
-	/*text-shadow: #FFFFFF 0px 1px 0px;*/
-	font-size: 15px;
-	display:none;
-}
+  SPAN#ampm
+  {
+  	font-family: Helvetica;
+  	font-weight: bold;
+  	color: #d1d1d1;
+  	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
+  	/*text-shadow: #FFFFFF 0px 1px 0px;*/
+  	font-size: 15px;
+  	display:none;
+  }
 
-TD#dateString
-{
-	font-family: Helvetica;
-	font-weight: bold;
-	color: #d1d1d1;
-	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
-	/*text-shadow: #FFFFFF 0px 1px 0px;*/
-	font-size: 11px;
-	text-align:center;
-}
+  TD#dateString
+  {
+  	font-family: Helvetica;
+  	font-weight: bold;
+  	color: #d1d1d1;
+  	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
+  	/*text-shadow: #FFFFFF 0px 1px 0px;*/
+  	font-size: 11px;
+  	text-align:center;
+  }
 
-TABLE#CalendarTable
-{
-	font-family: Helvetica;
-	font-weight: bold;
-	color: #d1d1d1;
-	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);
-	/*text-shadow: #FFFFFF 0px 1px 0px;*/
-	font-size: 11px;
-	text-align:center;
-	margin-top:6px;
-}
+  TABLE#CalendarTable
+  {
+  	font-family: Helvetica;
+  	font-weight: bold;
+  	color: #d1d1d1;
+  	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);
+  	/*text-shadow: #FFFFFF 0px 1px 0px;*/
+  	font-size: 11px;
+  	text-align:center;
+  	margin-top:6px;
+  }
 
-SPAN#calendar
-{
-	font-family: Helvetica;
-	font-weight: bold;
-	color: #d1d1d1;
-	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
-	/*text-shadow: #FFFFFF 0px 1px 0px;*/
-	font-size: 14px;
-	position:absolute;
-	top:162px;
-	text-align:right;
-	left:-2px;
-	width:300px;
+  SPAN#calendar
+  {
+  	font-family: Helvetica;
+  	font-weight: bold;
+  	color: #d1d1d1;
+  	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
+  	/*text-shadow: #FFFFFF 0px 1px 0px;*/
+  	font-size: 14px;
+  	position:absolute;
+  	top:162px;
+  	text-align:right;
+  	left:-2px;
+  	width:300px;
 
-}
+  }
 </style>
+
 <base href="Private/"/>
 <script type="text/javascript">
-var this_weekday_name_array = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
-var this_month_name_array = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")	//predefine month names
-
-var this_date_timestamp = new Date()
-
-var this_weekday = this_date_timestamp.getDay()
-var this_date = this_date_timestamp.getDate()
-var this_month = this_date_timestamp.getMonth()
-var this_year = this_date_timestamp.getYear()
-
-if (this_year < 1000)
-    this_year+= 1900;
-if (this_year==101)
-    this_year=2001;
-
-var this_date_string = this_weekday_name_array[this_weekday] + " " + this_date + " " + this_month_name_array[this_month]//concat long date string
-
-function init ( )
-{
-  timeDisplay = document.createTextNode ( "" );
-  document.getElementById("clock").appendChild ( timeDisplay );
-
-}
-
-function updateClock ( )
-{
-
-  var TwentyFourHourClock = true
-  var currentTime = new Date ( );
-  var currentHours = currentTime.getHours ( );
-  var currentMinutes = currentTime.getMinutes ( );
-  var currentSeconds = currentTime.getSeconds ( );
-
-  // Pad the minutes and seconds with leading zeros, if required
-  currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
-  currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
-
-if (TwentyFourHourClock == false){
-
-  var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM"
-  currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
-  currentHours = ( currentHours == 0 ) ? 12 : currentHours;
-if (timeOfDay == "PM"){
-document.getElementById("ampm").src="pm.png"
-}
-else
-{
-document.getElementById("ampm").src="am.png"
-}
-}
-  // Compose the string for display
-  var currentTimeString = currentHours + ":" + currentMinutes;
-
-  // Update the time display
-  currentHours = ( currentHours < 10 ? "0" : "" ) + currentHours;
-
-document.getElementById("hr1").src="Digits/"+currentHours.charAt(0)+".png";
-document.getElementById("hr2").src="Digits/"+currentHours.charAt(1)+".png";
-document.getElementById("min1").src="Digits/"+currentMinutes.charAt(0)+".png";
-document.getElementById("min2").src="Digits/"+currentMinutes.charAt(1)+".png";
-}
-
-function init2 ( )
-{
-  timeDisplay = document.createTextNode ( "" );
-  document.getElementById("ampm").appendChild ( timeDisplay );
-}
-
-function amPm ( )
-{
-  var currentTime = new Date ( );
-
-  var currentHours = currentTime.getHours ( );
-
-  // Choose either "AM" or "PM" as appropriate
-  var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
-
-  // Convert the hours component to 12-hour format if needed
-  currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
-
-  // Convert an hours component of "0" to "12"
-  currentHours = ( currentHours == 0 ) ? 12 : currentHours;
-
-  // Compose the string for display
-  var currentTimeString = timeOfDay;
-
-  // Update the time display
-  document.getElementById("ampm").firstChild.nodeValue = currentTimeString;
-}
-
-function init3 ( )
-{
-  timeDisplay = document.createTextNode ( "" );
-  document.getElementById("calendar").appendChild ( timeDisplay );
-}
-
-function daysInMonth(iMonth, iYear)
-{
-	return 32 - new Date(iYear, iMonth, 32).getDate();
-}
-
-function zeroPad(num,count)
-{
-var numZeropad = num + '';
-while(numZeropad.length < count) {
-numZeropad = "0" + numZeropad;
-}
-return numZeropad;
-}
-
-function calendarDate ( )
-{
-var this_weekday_name_array = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
-var this_month_name_array = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")	  //predefine month names
+  var this_weekday_name_array = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
+  var this_month_name_array = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")	//predefine month names
 
   var this_date_timestamp = new Date()
 
   var this_weekday = this_date_timestamp.getDay()
   var this_date = this_date_timestamp.getDate()
-
   var this_month = this_date_timestamp.getMonth()
-Current_Month = this_month
-document.getElementById("calendar").firstChild.nodeValue = this_weekday_name_array[this_weekday] + ", " + this_month_name_array[this_month] + this_date + "日"
-}
+  var this_year = this_date_timestamp.getYear()
+
+  if (this_year < 1000)
+      this_year+= 1900;
+  if (this_year==101)
+      this_year=2001;
+
+  var this_date_string = this_weekday_name_array[this_weekday] + " " + this_date + " " + this_month_name_array[this_month]//concat long date string
+
+  function init () {
+    timeDisplay = document.createTextNode ( "" );
+    document.getElementById("clock").appendChild ( timeDisplay );
+  }
+
+  function updateClock () {
+    var TwentyFourHourClock = true
+    var currentTime = new Date ();
+    var currentHours = currentTime.getHours ();
+    var currentMinutes = currentTime.getMinutes ();
+    var currentSeconds = currentTime.getSeconds ();
+
+    // Pad the minutes and seconds with leading zeros, if required
+    currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+    currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+
+    if (TwentyFourHourClock == false){
+      var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM"
+      currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+      currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+
+      if (timeOfDay == "PM") {
+        document.getElementById("ampm").src="pm.png"
+      } else {
+        document.getElementById("ampm").src="am.png"
+      }
+    }
+
+    // Compose the string for display
+    var currentTimeString = currentHours + ":" + currentMinutes;
+
+    // Update the time display
+    currentHours = ( currentHours < 10 ? "0" : "" ) + currentHours;
+
+    document.getElementById("hr1").src="Digits/"+currentHours.charAt(0)+".png";
+    document.getElementById("hr2").src="Digits/"+currentHours.charAt(1)+".png";
+    document.getElementById("min1").src="Digits/"+currentMinutes.charAt(0)+".png";
+    document.getElementById("min2").src="Digits/"+currentMinutes.charAt(1)+".png";
+  }
+
+  function init2 () {
+    timeDisplay = document.createTextNode ( "" );
+    document.getElementById("ampm").appendChild ( timeDisplay );
+  }
+
+  function amPm () {
+    var currentTime = new Date ();
+    var currentHours = currentTime.getHours ();
+    // Choose either "AM" or "PM" as appropriate
+    var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+
+    // Convert the hours component to 12-hour format if needed
+    currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+
+    // Convert an hours component of "0" to "12"
+    currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+
+    // Compose the string for display
+    var currentTimeString = timeOfDay;
+
+    // Update the time display
+    document.getElementById("ampm").firstChild.nodeValue = currentTimeString;
+  }
+
+  function init3 () {
+    timeDisplay = document.createTextNode ( "" );
+    document.getElementById("calendar").appendChild ( timeDisplay );
+  }
+
+  function daysInMonth(iMonth, iYear) {
+  	return 32 - new Date(iYear, iMonth, 32).getDate();
+  }
+
+  function zeroPad(num,count) {
+    var numZeropad = num + '';
+    while(numZeropad.length < count) {
+      numZeropad = "0" + numZeropad;
+    }
+    return numZeropad;
+  }
+
+  function calendarDate () {
+    var this_weekday_name_array = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
+    var this_month_name_array = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")	  //predefine month names
+    var this_date_timestamp = new Date()
+    var this_weekday = this_date_timestamp.getDay()
+    var this_date = this_date_timestamp.getDate()
+    var this_month = this_date_timestamp.getMonth()
+    Current_Month = this_month
+    document.getElementById("calendar").firstChild.nodeValue = this_weekday_name_array[this_weekday] + ", " + this_month_name_array[this_month] + this_date + "日"
+  }
 
 </script>
 
-<!-------------------------------以下为页面主体各元素---------------------------------->
 
 <body>
     <img src="bg.png" style="position: absolute; z-index:-1;top:25; left: 0px;" height="186" width="320">
     <img src="forecast-bg.png" style="position: absolute; z-index:-1;top:225; left: 0px;" width="320">
     <img src="" id="ampm" style="position: absolute; z-index:-1;top:135; left: 40px;" width="20">
-    <table border=0 style="position: absolute; z-index:-1;top:47; left: 37px;"><tr><td><img src="" width="49" height="80" border=0 id="hr1"></td><td><img src="" width="49" height="80" border=0 id="hr2"></td>
-<td width=30></td>
-<td><img src="" width="49" height="80" border=0 id="min1"></td><td><img src="" width="49" height="80" border=0 id="min2"></td>
-</tr>
-</table>
-<span id="calendar" align=right>
-	<script language="JavaScript">calendarDate(); setInterval('calendarDate()', 1000 )</script>
-	</span>
+    <table border=0 style="position: absolute; z-index:-1;top:47; left: 37px;">
+      <tr>
+        <td><img src="" width="49" height="80" border=0 id="hr1"></td><td><img src="" width="49" height="80" border=0 id="hr2"></td>
+        <td width=30></td>
+        <td><img src="" width="49" height="80" border=0 id="min1"></td><td><img src="" width="49" height="80" border=0 id="min2"></td>
+      </tr>
+    </table>
+
+    <span id="calendar" align=right>
+	     <script language="JavaScript">calendarDate(); setInterval('calendarDate()', 1000 )</script>
+	    </span>
     <span id="clock">
-	<script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script></span> <span id="ampm">
+	     <script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script></span> <span id="ampm">
     </span>
 
-
-
 </body>
-
-
-
-
-
 
 
 <body>
 
+  <center><div id="icon"  style="position: absolute;z-order:10; top: 170px; left: 90px;">
+    <img id="weatherIcon" src="" onclick="location.replace(location)"/>
+  </div></center>
 
-
-<center><div id="icon"  style="position: absolute;z-order:10; top: 170px; left: 90px;">
-
-<img id="weatherIcon" src="" onclick="location.replace(location)"/>
-
-</div></center>
-
-<div id="weatherFrame">
-
+  <div id="weatherFrame">
 	    <iframe id="animationFrame" name="animation" src="Animations/blank.html" width="320" height="480" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" allowtransparency="true"></iframe>
+    </div>
 
-	</div>
+    <div id="WeatherContainer">
+      <div id="TextContainer">
+        <p style="display:block;position: absolute; top: 143px; left: 20px;font-size:17px;width:292px;" id="city"></p>
+        <p  style="display:block;" id="temp"></p>
+        <p style="display:block;position: absolute;width:292px; top: 170px; left: 22px;font-size:14px;color: #d1d1d1; text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);font-weight: normal;" id="desc"></p>
+      </div>
+    </div>
 
-<div id="WeatherContainer">
+  <div id="Forecast" >
+    <p style="display:block;position: absolute; top: 190px;left:25px;" id="icon0" ><img id="wIcon0" width="42" heigth="42" src=""/></div>
+    <p style="display:block;position: absolute; top: 183px;left:81px;" id="icon1" ><img id="wIcon1" width="42" heigth="42" src=""/></div>
+    <p style="display:block;position: absolute; top: 183px;left:137px;" id="icon2" ><img id="wIcon2" width="42" heigth="42" src=""/></div>
+    <p style="display:block;position: absolute; top: 183px;left:193px;" id="icon3" ><img id="wIcon3" width="42" heigth="42" src=""/></div>
+    <p style="display:block;position: absolute; top: 183px;left:249px;" id="icon4" ><img id="wIcon4" width="42" heigth="42" src=""/></div>
+  </div>
 
-<div id="TextContainer">
+  <div id="Forecast" >
+    <table cellpadding=0 cellspacing=0  style="position:absolute; top:249px; left:20px" width="280" align=center>
+    	<tr>
+    		<td align=center><a id="hilo0"></a></td>
+    		<td align=center><a id="hilo1"></a></td>
+    		<td align=center><a id="hilo2"></a></td>
+    		<td align=center><a id="hilo3"></a></td>
+    		<td align=center><a id="hilo4"></a></td>
+    	</tr>
+    	<tr>
+    		<td align=center><a id="day0"></a></td>
+    		<td align=center><a id="day1"></a></td>
+    		<td align=center><a id="day2"></a></td>
+    		<td align=center><a id="day3"></a></td>
+    		<td align=center><a id="day4"></a></td>
+    	</tr>
+    </table>
+  </div>
 
+  <div id="cityclock">
+    <p id="city2"></p>
+    <table style="position: absolute;top: 90px; left: -166px; width: 320px; height: 461px;">
+      <tr align="right" valign="top"	border="0" cellpadding="0">
+      <td height="12" valign="top" margin-left="20">
+        <span id="clock">
+  	       <script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script>
+         </span>
+      </td>
+      </tr>
+    </table>
 
-
-<p style="display:block;position: absolute; top: 143px; left: 20px;font-size:17px;width:292px;" id="city"></p>
-
-<p  style="display:block;" id="temp"></p>
-
-<p style="display:block;position: absolute;width:292px; top: 170px; left: 22px;font-size:14px;color: #d1d1d1; text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);font-weight: normal;" id="desc"></p>
-
-
-
-
-
-</div>
-
-</div>
-
-
-
-<div id="Forecast" >
-
-
-<p style="display:block;position: absolute; top: 190px;left:25px;" id="icon0" ><img id="wIcon0" width="42" heigth="42" src=""/></div>
-
-<p style="display:block;position: absolute; top: 183px;left:81px;" id="icon1" ><img id="wIcon1" width="42" heigth="42" src=""/></div>
-
-<p style="display:block;position: absolute; top: 183px;left:137px;" id="icon2" ><img id="wIcon2" width="42" heigth="42" src=""/></div>
-
-<p style="display:block;position: absolute; top: 183px;left:193px;" id="icon3" ><img id="wIcon3" width="42" heigth="42" src=""/></div>
-
-<p style="display:block;position: absolute; top: 183px;left:249px;" id="icon4" ><img id="wIcon4" width="42" heigth="42" src=""/></div>
-
-</div><div id="Forecast" >
-<table cellpadding=0 cellspacing=0  style="position:absolute; top:249px; left:20px" width="280" align=center>
-	<tr>
-		<td align=center><a id="hilo0"></a></td>
-		<td align=center><a id="hilo1"></a></td>
-		<td align=center><a id="hilo2"></a></td>
-		<td align=center><a id="hilo3"></a></td>
-		<td align=center><a id="hilo4"></a></td>
-	</tr>
-	<tr>
-		<td align=center><a id="day0"></a></td>
-		<td align=center><a id="day1"></a></td>
-		<td align=center><a id="day2"></a></td>
-		<td align=center><a id="day3"></a></td>
-		<td align=center><a id="day4"></a></td>
-	</tr>
-</table>
-</div>
-
-
-
-
-<div id="cityclock"><p id="city2"></p>
-
-
-
-<table style="position: absolute;top: 90px; left: -166px; width: 320px; height: 461px;">
-
-<tr align="right" valign="top"	border="0" cellpadding="0">
-
-    <td height="12" valign="top" margin-left="20">
-
-    <span id="clock">
-
-	<script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script></span>
-
-    </td>
-
-</tr>
-
-</table>
-
-
-
-<table style="position: absolute; top: 90px; left: 162px; width: 320px; height: 461px;">
-
-<tr align="left" valign="top"  border="0" cellpadding="0">
-
-    <td height="12" valign="top" margin-left="20">
-
-    <span id="mins">
-
-	<script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script></span>
-
-    </td>
-
-</tr>
-
-</table>
-
+  <table style="position: absolute; top: 90px; left: 162px; width: 320px; height: 461px;">
+    <tr align="left" valign="top"  border="0" cellpadding="0">
+      <td height="12" valign="top" margin-left="20">
+        <span id="mins">
+  	       <script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script>
+        </span>
+      </td>
+    </tr>
+  </table>
 
 </body>
 
 
-
-
-
 <head>
-
     <base href="Private/"/>
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
 </head>
-
 
 
 <script type="text/javascript">
