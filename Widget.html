@@ -5,13 +5,13 @@
 <head><title>newclock</title>
 </head>
 <style>
- 
+
 SPAN#clock
 {
 	font-family: Helvetica;
-	font-weight: bold; 
-	color: #d1d1d1; 
-	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);	
+	font-weight: bold;
+	color: #d1d1d1;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
 	/*text-shadow: #FFFFFF 0px 1px 0px;*/
 	font-size: 26px;
 }
@@ -19,9 +19,9 @@ SPAN#clock
 SPAN#ampm
 {
 	font-family: Helvetica;
-	font-weight: bold; 
-	color: #d1d1d1; 
-	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);	
+	font-weight: bold;
+	color: #d1d1d1;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
 	/*text-shadow: #FFFFFF 0px 1px 0px;*/
 	font-size: 15px;
 	display:none;
@@ -30,9 +30,9 @@ SPAN#ampm
 TD#dateString
 {
 	font-family: Helvetica;
-	font-weight: bold; 
-	color: #d1d1d1; 
-	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);	
+	font-weight: bold;
+	color: #d1d1d1;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
 	/*text-shadow: #FFFFFF 0px 1px 0px;*/
 	font-size: 11px;
 	text-align:center;
@@ -41,21 +41,21 @@ TD#dateString
 TABLE#CalendarTable
 {
 	font-family: Helvetica;
-	font-weight: bold; 
-	color: #d1d1d1; 
-	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);	
+	font-weight: bold;
+	color: #d1d1d1;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);
 	/*text-shadow: #FFFFFF 0px 1px 0px;*/
 	font-size: 11px;
 	text-align:center;
 	margin-top:6px;
 }
 
-SPAN#calendar 
+SPAN#calendar
 {
 	font-family: Helvetica;
 	font-weight: bold;
-	color: #d1d1d1; 
-	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);	
+	color: #d1d1d1;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);
 	/*text-shadow: #FFFFFF 0px 1px 0px;*/
 	font-size: 14px;
 	position:absolute;
@@ -63,25 +63,25 @@ SPAN#calendar
 	text-align:right;
 	left:-2px;
 	width:300px;
-	
+
 }
 </style>
 <base href="Private/"/>
 <script type="text/javascript">
-var this_weekday_name_array = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六")
-var this_month_name_array = new Array("一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月")	//predefine month names
-    
-var this_date_timestamp = new Date()	
+var this_weekday_name_array = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
+var this_month_name_array = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")	//predefine month names
 
-var this_weekday = this_date_timestamp.getDay()    
-var this_date = this_date_timestamp.getDate()	 
-var this_month = this_date_timestamp.getMonth()    
-var this_year = this_date_timestamp.getYear()	 
+var this_date_timestamp = new Date()
+
+var this_weekday = this_date_timestamp.getDay()
+var this_date = this_date_timestamp.getDate()
+var this_month = this_date_timestamp.getMonth()
+var this_year = this_date_timestamp.getYear()
 
 if (this_year < 1000)
     this_year+= 1900;
 if (this_year==101)
-    this_year=2001;	   
+    this_year=2001;
 
 var this_date_string = this_weekday_name_array[this_weekday] + " " + this_date + " " + this_month_name_array[this_month]//concat long date string
 
@@ -94,8 +94,8 @@ function init ( )
 
 function updateClock ( )
 {
-	
-  var TwentyFourHourClock = true  
+
+  var TwentyFourHourClock = true
   var currentTime = new Date ( );
   var currentHours = currentTime.getHours ( );
   var currentMinutes = currentTime.getMinutes ( );
@@ -180,15 +180,15 @@ return numZeropad;
 
 function calendarDate ( )
 {
-var this_weekday_name_array = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六")
-var this_month_name_array = new Array("1月","2月","3月","4月","5月","6月","7月","8月","9月","10","11月","12月")	  //predefine month names
-    
-  var this_date_timestamp = new Date()	  
+var this_weekday_name_array = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
+var this_month_name_array = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")	  //predefine month names
 
-  var this_weekday = this_date_timestamp.getDay()    
-  var this_date = this_date_timestamp.getDate()  
- 
-  var this_month = this_date_timestamp.getMonth()    
+  var this_date_timestamp = new Date()
+
+  var this_weekday = this_date_timestamp.getDay()
+  var this_date = this_date_timestamp.getDate()
+
+  var this_month = this_date_timestamp.getMonth()
 Current_Month = this_month
 document.getElementById("calendar").firstChild.nodeValue = this_weekday_name_array[this_weekday] + ", " + this_month_name_array[this_month] + this_date + "日"
 }
@@ -213,7 +213,7 @@ document.getElementById("calendar").firstChild.nodeValue = this_weekday_name_arr
 	<script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script></span> <span id="ampm">
     </span>
 
-	
+
 
 </body>
 
@@ -421,7 +421,7 @@ if(iconSet == null || iconSet == 'null' || iconSet == ""){
 
 
 
-var headID = document.getElementsByTagName("head")[0];	      
+var headID = document.getElementsByTagName("head")[0];
 
 var styleNode = document.createElement('link');
 
@@ -447,7 +447,7 @@ headID.appendChild(scriptNode);
 
 function onLoad(){
 
-	if (enabled == true){ 
+	if (enabled == true){
 
 	if (demoMode == true){
 
@@ -457,11 +457,11 @@ function onLoad(){
 
 		document.getElementById("desc").innerText="Partly Cloudy";
 
-		document.getElementById("temp").innerText="100";		
+		document.getElementById("temp").innerText="100";
 
-		document.getElementById("forecast").innerText="Sun";	
+		document.getElementById("forecast").innerText="Sun";
 
-	}else{ 
+	}else{
 
 	document.getElementById("weatherIcon").src="IconSets/"+iconSet+"/"+"dunno"+iconExt;
 
@@ -503,7 +503,7 @@ function setPostal(obj){
 
 			postal = escape(obj.cities[0].zip).replace(/^%u/g, "%")
 
-			document.getElementById("WeatherContainer").className = "";	
+			document.getElementById("WeatherContainer").className = "";
 
 			weatherRefresherTemp();
 
@@ -511,7 +511,7 @@ function setPostal(obj){
 
 			document.getElementById("city").innerText="Not Found";
 
-			document.getElementById("WeatherContainer").className = "errorLocaleNotFound";	
+			document.getElementById("WeatherContainer").className = "errorLocaleNotFound";
 
 		}
 
@@ -519,7 +519,7 @@ function setPostal(obj){
 
 		document.getElementById("city").innerText=obj.errorString;
 
-		document.getElementById("WeatherContainer").className = "errorLocaleValidate";	
+		document.getElementById("WeatherContainer").className = "errorLocaleValidate";
 
 		setTimeout('validateWeatherLocation(escape(locale).replace(/^%u/g, "%"), setPostal)', Math.round(1000*60*5));
 
@@ -548,19 +548,19 @@ function dealWithWeather(obj){
 		if (translatedesc=='intermittent clouds') { document.getElementById("desc").innerHTML="多云";	 }
 		if (translatedesc=='hazy sunshine') { document.getElementById("desc").innerHTML="雾蒙蒙的阳光";	}
 		if (translatedesc=='mostly cloudy') { document.getElementById("desc").innerHTML="大部多云";	 }
-		if (translatedesc=='cloudy') { document.getElementById("desc").innerHTML="多云";    }		
+		if (translatedesc=='cloudy') { document.getElementById("desc").innerHTML="多云";    }
 		if (translatedesc=='dreary') { document.getElementById("desc").innerHTML="阴天";    }
-		if (translatedesc=='retired') { document.getElementById("desc").innerHTML="未知";    }	
-		if (translatedesc=='retired') { document.getElementById("desc").innerHTML="未知";    }	
-		if (translatedesc=='fog') { document.getElementById("desc").innerHTML="大雾";	  }	
+		if (translatedesc=='retired') { document.getElementById("desc").innerHTML="未知";    }
+		if (translatedesc=='retired') { document.getElementById("desc").innerHTML="未知";    }
+		if (translatedesc=='fog') { document.getElementById("desc").innerHTML="大雾";	  }
 		if (translatedesc=='showers') { document.getElementById("desc").innerHTML="阵雨";	}
 		if (translatedesc=='mostly cloudy with showers') { document.getElementById("desc").innerHTML="多云有阵雨";	  }
-		if (translatedesc=='partly sunny with showers') { document.getElementById("desc").innerHTML="局部晴有阵雨";    }	
+		if (translatedesc=='partly sunny with showers') { document.getElementById("desc").innerHTML="局部晴有阵雨";    }
 		if (translatedesc=='thunderstorms') { document.getElementById("desc").innerHTML="雷暴雨";    }
 		if (translatedesc=='mostly cloudy with thunder showers') { document.getElementById("desc").innerHTML="多云有雷阵雨";	  }
 		if (translatedesc=='partly sunny with thunder showers') { document.getElementById("desc").innerHTML="局部晴有雷阵雨";    }
 		if (translatedesc=='rain') { document.getElementById("desc").innerHTML="雨天";    }
-		if (translatedesc=='flurries') { document.getElementById("desc").innerHTML="微雪";	}		
+		if (translatedesc=='flurries') { document.getElementById("desc").innerHTML="微雪";	}
 		if (translatedesc=='mostly cloudy with flurries') { document.getElementById("desc").innerHTML="大部多云,有微雪";	  }
 		if (translatedesc=='partly sunny with flurries') { document.getElementById("desc").innerHTML="局部晴,有微雪";    }
 		if (translatedesc=='snow') { document.getElementById("desc").innerHTML="下雪";    }
@@ -568,24 +568,24 @@ function dealWithWeather(obj){
 		if (translatedesc=='ice') { document.getElementById("desc").innerHTML="结冰";	}
 		if (translatedesc=='sleet') { document.getElementById("desc").innerHTML="雨夹雪";    }
 		if (translatedesc=='freezing rain') { document.getElementById("desc").innerHTML="冻雨";	 }
-		if (translatedesc=='retired') { document.getElementById("desc").innerHTML="未知";    }	
-		if (translatedesc=='retired') { document.getElementById("desc").innerHTML="未知";    }	
+		if (translatedesc=='retired') { document.getElementById("desc").innerHTML="未知";    }
+		if (translatedesc=='retired') { document.getElementById("desc").innerHTML="未知";    }
 		if (translatedesc=='rain and snow mixed') { document.getElementById("desc").innerHTML="雨夹雪";	}
-		if (translatedesc=='hot') { document.getElementById("desc").innerHTML="炎热";	  }	
-		if (translatedesc=='cold') { document.getElementById("desc").innerHTML="寒冷";	  }		
+		if (translatedesc=='hot') { document.getElementById("desc").innerHTML="炎热";	  }
+		if (translatedesc=='cold') { document.getElementById("desc").innerHTML="寒冷";	  }
 		if (translatedesc=='windy') { document.getElementById("desc").innerHTML="有风";    }
-		if (translatedesc=='clear') { document.getElementById("desc").innerHTML="晴朗";    }		
-		if (translatedesc=='mostly clear') { document.getElementById("desc").innerHTML="大部晴朗";	}		
+		if (translatedesc=='clear') { document.getElementById("desc").innerHTML="晴朗";    }
+		if (translatedesc=='mostly clear') { document.getElementById("desc").innerHTML="大部晴朗";	}
 		if (translatedesc=='partly cloudy') { document.getElementById("desc").innerHTML="局部多云";	 }
 		if (translatedesc=='intermittent clouds') { document.getElementById("desc").innerHTML="多云";	 }
 		if (translatedesc=='hazy') { document.getElementById("desc").innerHTML="薄雾";    }
-		if (translatedesc=='mostly cloudy') { document.getElementById("desc").innerHTML="大部多云";	 }	
+		if (translatedesc=='mostly cloudy') { document.getElementById("desc").innerHTML="大部多云";	 }
 		if (translatedesc=='partly cloudy with showers') { document.getElementById("desc").innerHTML="局部多云,有阵雨";	}
 		if (translatedesc=='mostly cloudy with showers') { document.getElementById("desc").innerHTML="大部多云,有阵雨";	  }
 		if (translatedesc=='party cloudy with thunder showers') { document.getElementById("desc").innerHTML="局部多云,有雷阵雨";	 }
 		if (translatedesc=='mostly cloudy with thunder showers') { document.getElementById("desc").innerHTML="多云有雷阵雨";	  }
-		if (translatedesc=='mostly cloudy with flurries') { document.getElementById("desc").innerHTML="大部多云,有微雪"; }	
-		if (translatedesc=='mostly cloudy with flurries') { document.getElementById("desc").innerHTML="大部多云,有微雪"; }	
+		if (translatedesc=='mostly cloudy with flurries') { document.getElementById("desc").innerHTML="大部多云,有微雪"; }
+		if (translatedesc=='mostly cloudy with flurries') { document.getElementById("desc").innerHTML="大部多云,有微雪"; }
 		if (translatedesc=='clouds and sun') { document.getElementById("desc").innerHTML="晴转多云"; }
         if (translatedesc=='a shower') { document.getElementById("desc").innerHTML="时有阵雨"; }
         if (translatedesc=='rain shower') { document.getElementById("desc").innerHTML="时有阵雨"; }
@@ -595,19 +595,19 @@ function dealWithWeather(obj){
 		if (translatedesc=='rain/snow') { document.getElementById("desc").innerHTML="雨夹雪"; }
 		if (translatedesc=='light snow') { document.getElementById("desc").innerHTML="小雪"; }
 		if (translatedesc=='light rain') { document.getElementById("desc").innerHTML="小雨"; }
-		if (translatedesc=='a mix of snow and rain') { document.getElementById("desc").innerHTML="雨夹雪"; }		
-		if (translatedesc=='sun through high clouds') { document.getElementById("desc").innerHTML="高云转晴"; }			
-		if (translatedesc=='clear to partly cloudy') { document.getElementById("desc").innerHTML="晴, 转晴间多云"; }	
+		if (translatedesc=='a mix of snow and rain') { document.getElementById("desc").innerHTML="雨夹雪"; }
+		if (translatedesc=='sun through high clouds') { document.getElementById("desc").innerHTML="高云转晴"; }
+		if (translatedesc=='clear to partly cloudy') { document.getElementById("desc").innerHTML="晴, 转晴间多云"; }
 		if (translatedesc=='rain and drizzle') { document.getElementById("desc").innerHTML="雨间毛毛雨"; }
 
-	
-
-		
-
-		
 
 
-		
+
+
+
+
+
+
 
 		if(useRealFeel == true){
 
@@ -619,7 +619,7 @@ function dealWithWeather(obj){
 
 		}
 
-		
+
 
 		document.getElementById("temp").innerText=tempValue+"ºC";
 
@@ -710,7 +710,7 @@ function dealWithWeather(obj){
 				"partlymoon",
 
 				"partlymoon"];
-				
+
 		document.getElementById("animationFrame").src="Animations/"+Conditions[obj.icon]+".html";
 
 		/*ProductRed*/
@@ -721,7 +721,7 @@ function dealWithWeather(obj){
 
 		var c = obj.forecast.length;
 
-		var titi = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+		var titi = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
 
 		var toto =new Date();
 
@@ -742,7 +742,7 @@ function dealWithWeather(obj){
 		if(tata > 6) {tata = tata - 7;}
 
 		document.getElementById('day'+i).innerText = titi[tata];
-		
+
 		document.getElementById('hilo'+i).innerHTML=convertTemp(forecast.hi)+'&#176;/'+convertTemp(forecast.lo)+ "&#176;";
 
 		document.getElementById('wIcon'+i).src="IconSets/"+iconSet+"/"+MiniIcons[forecast.icon]+iconExt;
@@ -755,7 +755,7 @@ function dealWithWeather(obj){
 
 		/*ProductRed*/
 
-		document.getElementById("WeatherContainer").className = "";		
+		document.getElementById("WeatherContainer").className = "";
 
 	}else{
 
@@ -763,7 +763,7 @@ function dealWithWeather(obj){
 
 		//Could be down to any number of things, which is unhelpful...
 
-		document.getElementById("WeatherContainer").className = "errorWeatherDataFetch";	
+		document.getElementById("WeatherContainer").className = "errorWeatherDataFetch";
 
 	}
 
@@ -1015,7 +1015,7 @@ function trimWhiteSpace (string)
 
 //		sunset: time 24 hours (nn:nn)
 
-//		sunrise: time 24 hours (nn:nn)	
+//		sunrise: time 24 hours (nn:nn)
 
 
 
@@ -1109,7 +1109,7 @@ function xml_loaded (event, request, callback)
 
 	{
 
-		var obj = {error:false, errorString:null}; 
+		var obj = {error:false, errorString:null};
 
 		var adc_Database = findChild (request.responseXML, "adc_Database");
 
@@ -1143,7 +1143,7 @@ function xml_loaded (event, request, callback)
 
 		obj.temp = parseInt (tag.firstChild.data);
 
-		
+
 
 		tag = findChild (CurrentConditions, "RealFeel");
 
@@ -1151,7 +1151,7 @@ function xml_loaded (event, request, callback)
 
 		obj.realFeel = parseInt (tag.firstChild.data);
 
-		
+
 
 		tag = findChild (CurrentConditions, "WeatherText");
 
@@ -1275,7 +1275,7 @@ function xml_loaded (event, request, callback)
 
 				if (tag != null)
 
-					foreobj.lo = parseInt (tag.firstChild.data);			      
+					foreobj.lo = parseInt (tag.firstChild.data);
 
 				tag = findChild(child, 'WeatherIcon');
 
@@ -1297,7 +1297,7 @@ function xml_loaded (event, request, callback)
 
 		}
 
-		callback (obj); 
+		callback (obj);
 
 	}
 
