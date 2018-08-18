@@ -286,7 +286,7 @@ var iconExtWall = '.png'
 
 var iconExtLock = '.png'
 
-var locale = 'ASI|SW|XX0031|Stockholm, Sweden'
+var locale = 'EUR|SW|XX0031|Stockholm,Sweden'
 
 var iconSetWall = 'stardock'
 
@@ -464,7 +464,7 @@ function dealWithWeather(obj){
 
 	if (obj.error == false){
 
-		document.getElementById("city").innerText="东营";
+		document.getElementById("city").innerText="Stockholm";
 
 		//document.getElementById("city2").innerText=obj.city;
 
@@ -952,7 +952,7 @@ function fetchWeatherData (callback, zip)
 
 {
 
-	var url = 'http://apple.accuweather.com/adcbin/apple/Apple_Weather_Data.asp?zipcode=';
+	var url = 'http://apple.accuweather.com/adcbin/apple/Apple_Weather_Data.asp?zipcode=Stockholm,Sweden';
 
 	//var url = 'http://wu.apple.com/adcbin/apple/Apple_Weather_Data.asp?zipcode=';
 
@@ -966,7 +966,7 @@ function fetchWeatherData (callback, zip)
 
 	xml_request.overrideMimeType("text/xml");
 
-	xml_request.open("GET", url+zip);
+	xml_request.open("GET", url);
 
 	xml_request.setRequestHeader("Cache-Control", "no-cache");
 
