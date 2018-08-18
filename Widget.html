@@ -176,7 +176,7 @@
     var this_date = this_date_timestamp.getDate()
     var this_month = this_date_timestamp.getMonth()
     Current_Month = this_month
-    document.getElementById("calendar").firstChild.nodeValue = this_weekday_name_array[this_weekday] + ", " + this_month_name_array[this_month] + this_date + "日"
+    document.getElementById("calendar").firstChild.nodeValue = this_weekday_name_array[this_weekday] + ", " + this_month_name_array[this_month] + this_date
   }
 
 </script>
@@ -186,98 +186,154 @@
     <img src="bg.png" style="position: absolute; z-index:-1;top:25; left: 0px;" height="186" width="320">
     <img src="forecast-bg.png" style="position: absolute; z-index:-1;top:225; left: 0px;" width="320">
     <img src="" id="ampm" style="position: absolute; z-index:-1;top:135; left: 40px;" width="20">
-    <table border=0 style="position: absolute; z-index:-1;top:47; left: 37px;">
-      <tr>
-        <td><img src="" width="49" height="80" border=0 id="hr1"></td><td><img src="" width="49" height="80" border=0 id="hr2"></td>
-        <td width=30></td>
-        <td><img src="" width="49" height="80" border=0 id="min1"></td><td><img src="" width="49" height="80" border=0 id="min2"></td>
-      </tr>
-    </table>
-
-    <span id="calendar" align=right>
-	     <script language="JavaScript">calendarDate(); setInterval('calendarDate()', 1000 )</script>
-	    </span>
+    <table border=0 style="position: absolute; z-index:-1;top:47; left: 37px;"><tr><td><img src="" width="49" height="80" border=0 id="hr1"></td><td><img src="" width="49" height="80" border=0 id="hr2"></td>
+<td width=30></td>
+<td><img src="" width="49" height="80" border=0 id="min1"></td><td><img src="" width="49" height="80" border=0 id="min2"></td>
+</tr>
+</table>
+<span id="calendar" align=right>
+	<script language="JavaScript">calendarDate(); setInterval('calendarDate()', 1000 )</script>
+	</span>
     <span id="clock">
-	     <script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script></span> <span id="ampm">
+	<script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script></span> <span id="ampm">
     </span>
 
+
+
 </body>
+
+
+
+
+
 
 
 <body>
 
-  <center><div id="icon"  style="position: absolute;z-order:10; top: 170px; left: 90px;">
-    <img id="weatherIcon" src="" onclick="location.replace(location)"/>
-  </div></center>
 
-  <div id="weatherFrame">
+
+<center><div id="icon"  style="position: absolute;z-order:10; top: 170px; left: 90px;">
+
+<img id="weatherIcon" src="" onclick="location.replace(location)"/>
+
+</div></center>
+
+<div id="weatherFrame">
+
 	    <iframe id="animationFrame" name="animation" src="Animations/blank.html" width="320" height="480" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" allowtransparency="true"></iframe>
-    </div>
 
-    <div id="WeatherContainer">
-      <div id="TextContainer">
-        <p style="display:block;position: absolute; top: 143px; left: 20px;font-size:17px;width:292px;" id="city"></p>
-        <p  style="display:block;" id="temp"></p>
-        <p style="display:block;position: absolute;width:292px; top: 170px; left: 22px;font-size:14px;color: #d1d1d1; text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);font-weight: normal;" id="desc"></p>
-      </div>
-    </div>
+	</div>
 
-  <div id="Forecast" >
-    <p style="display:block;position: absolute; top: 190px;left:25px;" id="icon0" ><img id="wIcon0" width="42" heigth="42" src=""/></div>
-    <p style="display:block;position: absolute; top: 183px;left:81px;" id="icon1" ><img id="wIcon1" width="42" heigth="42" src=""/></div>
-    <p style="display:block;position: absolute; top: 183px;left:137px;" id="icon2" ><img id="wIcon2" width="42" heigth="42" src=""/></div>
-    <p style="display:block;position: absolute; top: 183px;left:193px;" id="icon3" ><img id="wIcon3" width="42" heigth="42" src=""/></div>
-    <p style="display:block;position: absolute; top: 183px;left:249px;" id="icon4" ><img id="wIcon4" width="42" heigth="42" src=""/></div>
-  </div>
+<div id="WeatherContainer">
 
-  <div id="Forecast" >
-    <table cellpadding=0 cellspacing=0  style="position:absolute; top:249px; left:20px" width="280" align=center>
-    	<tr>
-    		<td align=center><a id="hilo0"></a></td>
-    		<td align=center><a id="hilo1"></a></td>
-    		<td align=center><a id="hilo2"></a></td>
-    		<td align=center><a id="hilo3"></a></td>
-    		<td align=center><a id="hilo4"></a></td>
-    	</tr>
-    	<tr>
-    		<td align=center><a id="day0"></a></td>
-    		<td align=center><a id="day1"></a></td>
-    		<td align=center><a id="day2"></a></td>
-    		<td align=center><a id="day3"></a></td>
-    		<td align=center><a id="day4"></a></td>
-    	</tr>
-    </table>
-  </div>
+<div id="TextContainer">
 
-  <div id="cityclock">
-    <p id="city2"></p>
-    <table style="position: absolute;top: 90px; left: -166px; width: 320px; height: 461px;">
-      <tr align="right" valign="top"	border="0" cellpadding="0">
-      <td height="12" valign="top" margin-left="20">
-        <span id="clock">
-  	       <script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script>
-         </span>
-      </td>
-      </tr>
-    </table>
 
-  <table style="position: absolute; top: 90px; left: 162px; width: 320px; height: 461px;">
-    <tr align="left" valign="top"  border="0" cellpadding="0">
-      <td height="12" valign="top" margin-left="20">
-        <span id="mins">
-  	       <script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script>
-        </span>
-      </td>
-    </tr>
-  </table>
+
+<p style="display:block;position: absolute; top: 143px; left: 20px;font-size:17px;width:292px;" id="city"></p>
+
+<p  style="display:block;" id="temp"></p>
+
+<p style="display:block;position: absolute;width:292px; top: 170px; left: 22px;font-size:14px;color: #d1d1d1; text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);font-weight: normal;" id="desc"></p>
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+<div id="Forecast" >
+
+
+<p style="display:block;position: absolute; top: 190px;left:25px;" id="icon0" ><img id="wIcon0" width="42" heigth="42" src=""/></div>
+
+<p style="display:block;position: absolute; top: 183px;left:81px;" id="icon1" ><img id="wIcon1" width="42" heigth="42" src=""/></div>
+
+<p style="display:block;position: absolute; top: 183px;left:137px;" id="icon2" ><img id="wIcon2" width="42" heigth="42" src=""/></div>
+
+<p style="display:block;position: absolute; top: 183px;left:193px;" id="icon3" ><img id="wIcon3" width="42" heigth="42" src=""/></div>
+
+<p style="display:block;position: absolute; top: 183px;left:249px;" id="icon4" ><img id="wIcon4" width="42" heigth="42" src=""/></div>
+
+</div><div id="Forecast" >
+<table cellpadding=0 cellspacing=0  style="position:absolute; top:249px; left:20px" width="280" align=center>
+	<tr>
+		<td align=center><a id="hilo0"></a></td>
+		<td align=center><a id="hilo1"></a></td>
+		<td align=center><a id="hilo2"></a></td>
+		<td align=center><a id="hilo3"></a></td>
+		<td align=center><a id="hilo4"></a></td>
+	</tr>
+	<tr>
+		<td align=center><a id="day0"></a></td>
+		<td align=center><a id="day1"></a></td>
+		<td align=center><a id="day2"></a></td>
+		<td align=center><a id="day3"></a></td>
+		<td align=center><a id="day4"></a></td>
+	</tr>
+</table>
+</div>
+
+
+
+
+<div id="cityclock"><p id="city2"></p>
+
+
+
+<table style="position: absolute;top: 90px; left: -166px; width: 320px; height: 461px;">
+
+<tr align="right" valign="top"	border="0" cellpadding="0">
+
+    <td height="12" valign="top" margin-left="20">
+
+    <span id="clock">
+
+	<script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script></span>
+
+    </td>
+
+</tr>
+
+</table>
+
+
+
+<table style="position: absolute; top: 90px; left: 162px; width: 320px; height: 461px;">
+
+<tr align="left" valign="top"  border="0" cellpadding="0">
+
+    <td height="12" valign="top" margin-left="20">
+
+    <span id="mins">
+
+	<script language="JavaScript">updateClock(); setInterval('updateClock()', 1000 )</script></span>
+
+    </td>
+
+</tr>
+
+</table>
+
 
 </body>
 
 
+
+
+
 <head>
+
     <base href="Private/"/>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
 </head>
+
 
 
 <script type="text/javascript">
@@ -286,7 +342,7 @@ var iconExtWall = '.png'
 
 var iconExtLock = '.png'
 
-var locale = 'EUR|SW|XX0031|Stockholm,Sweden'
+var locale = 'EUR|SW|XX0031|Sweden (Stockholm)'
 
 var iconSetWall = 'stardock'
 
@@ -952,7 +1008,7 @@ function fetchWeatherData (callback, zip)
 
 {
 
-	var url = 'http://apple.accuweather.com/adcbin/apple/Apple_Weather_Data.asp?zipcode=Stockholm,Sweden';
+	var url = 'http://apple.accuweather.com/adcbin/apple/Apple_Weather_Data.asp?zipcode=';
 
 	//var url = 'http://wu.apple.com/adcbin/apple/Apple_Weather_Data.asp?zipcode=';
 
@@ -966,7 +1022,7 @@ function fetchWeatherData (callback, zip)
 
 	xml_request.overrideMimeType("text/xml");
 
-	xml_request.open("GET", url);
+	xml_request.open("GET", url+zip);
 
 	xml_request.setRequestHeader("Cache-Control", "no-cache");
 
@@ -1270,7 +1326,7 @@ function validateWeatherLocation (location, callback)
 
 {
 
-	var url = 'http://apple.accuweather.com/adcbin/apple/Apple_find_city.asp?location=';
+	var url = 'http://apple.accuweather.com/adcbin/apple/Apple_find_city.asp?location=Stockholm,Sweden (Stockholm)';
 
 	//var url = 'http://wu.apple.com/adcbin/apple/Apple_find_city.asp?location=';
 
@@ -1280,7 +1336,7 @@ function validateWeatherLocation (location, callback)
 
 	xml_request.overrideMimeType("text/xml");
 
-	xml_request.open("GET", url+location);
+	xml_request.open("GET", url);
 
 	xml_request.setRequestHeader("Cache-Control", "no-cache");
 
