@@ -1,0 +1,109 @@
+#WeatherContainer{
+	width:320px;
+    color:#ffffff;
+    background-color: rgba(0,0,0,0);
+    height:480px;
+
+}
+
+#TextContainer{
+    font-size:13px;
+    font-family: Helvetica;
+    text-transform:uppercase;
+    text-shadow: rgba(0,0,0,0.7) 0 0 0px;
+
+}
+#city{
+	color: #d1d1d1; 
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);	
+	/*text-shadow: #FFFFFF 0px 1px 0px;*/
+	font-size: 15px;
+}
+
+
+#temp{
+    position:absolute;
+	top:154px;
+	padding-right:20px;
+	color: #d1d1d1; 
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7);	
+	/*text-shadow: #FFFFFF 0px 1px 0px;*/
+	font-size: 23px;
+	font-weight: bold;
+	text-align:right;
+	left:-2px;
+	width:300;	
+}
+
+#weatherIcon{
+    position: absolute; 
+    top:-50px;
+	left:18px;
+	width:100px;
+	heigth:100px;
+    z-index:100;
+}
+
+
+
+#Forecast {
+    font-size:9px;
+    font-family: Helvetica;
+    text-transform:uppercase;
+    font-weight:200;
+    //text-shadow: 0px 0px 4px white;
+    text-align: center;
+    width:200px;
+    z-index:1;
+    color:#ffffff;
+    margin: 4px 0 0 5px;
+}
+
+#day1, #day2, #day3, #day4, #day5, #day0 {
+    color: #d1d1d1; 
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 0 0px 3px #000000;
+	/*text-shadow: #FFFFFF 0px 1px 0px;*/
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#icon1, #icon2, #icon3, #icon4, #icon5, #icon0 {
+    height:38px;
+    width:33px;
+    padding-top:14px;
+	vertical-align:top;
+	width:5em!important;width:13.3px;
+	display:table-cell!important;display:inline;
+}
+
+#hilo1, #hilo2, #hilo3, #hilo4, #hilo5, #hilo0 {
+    color: #d1d1d1; 
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), 0 0px 3px #000000;
+	/*text-shadow: #FFFFFF 0px 1px 0px;*/
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#hi1, #hi2, #hi3, #hi4, #hi5, #hi0 {
+       text-align: center;
+	vertical-align:top;
+	width:15em!important;width:13.3px;
+	display:table-cell!important;display:inline;
+  	color: white;
+	//text-shadow: 0px 0px 4px white;
+	font-family: Helvetica;
+	font-size:9px;
+   	padding-bottom:3px;
+}
+
+#low1, #low2, #low3, #low4, #low5, #low0 {
+       text-align: center;
+	vertical-align:top;
+	width:15em!important;width:13.3px;
+	display:table-cell!important;display:inline;
+  	color: white;
+	//text-shadow: 0px 0px 4px white;
+	font-family: Helvetica;
+	font-size:9px;
+   	padding-bottom:3px;
+}
